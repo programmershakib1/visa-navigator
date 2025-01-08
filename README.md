@@ -114,6 +114,4 @@ To get this project up and running on your local machine, follow these steps:
 
 ---
 
----
-
 Thank you for visiting Visa Navigator! 🚀
