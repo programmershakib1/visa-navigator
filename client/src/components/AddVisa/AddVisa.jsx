@@ -57,16 +57,22 @@ const AddVisa = () => {
       .then((data) => {
         if (data.insertedId) {
           e.target.reset();
-          Swal.fire("Visa added successfully");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Visa added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           setRequiredDocuments([]);
         }
       });
   };
 
   return (
-    <div className="mx-5 md:mx-20 lg:mx-40 mt-0 md:mt-10 lg:mt-0">
+    <div className="mx-5 md:mx-0 mt-10">
       <Helmet>
-        <title>VN | Add Visa</title>
+        <title>Add Visa - Visa Navigator</title>
       </Helmet>
       <form onSubmit={handleAddVisa}>
         <div className="md:grid md:gap-2">
@@ -78,7 +84,7 @@ const AddVisa = () => {
               type="text"
               name="name"
               placeholder="Country name"
-              className="w-full py-2 border border-black mt-1 mb-2 pl-3 dark:bg-c"
+              className="w-full py-3 rounded-full shadow-md mt-1 mb-2 pl-3 dark:bg-c"
               required
             />
           </div>
@@ -90,7 +96,7 @@ const AddVisa = () => {
               name="photo"
               type="text"
               placeholder="Country image"
-              className="w-full py-2 border border-black mt-1 mb-2 pl-3 dark:bg-c"
+              className="w-full py-3 rounded-full shadow-md mt-1 mb-2 pl-3 dark:bg-c"
               required
             />
           </div>
@@ -102,7 +108,7 @@ const AddVisa = () => {
               type="number"
               name="fee"
               placeholder="Fee"
-              className="w-full py-2 border border-black mt-1 mb-2 pl-3 dark:bg-c"
+              className="w-full py-3 rounded-full shadow-md mt-1 mb-2 pl-3 dark:bg-c"
               required
             />
           </div>
@@ -114,7 +120,7 @@ const AddVisa = () => {
               type="number"
               name="age_restriction"
               placeholder="Age restriction"
-              className="w-full py-2 border border-black mt-1 mb-2 pl-3 dark:bg-c"
+              className="w-full py-3 rounded-full shadow-md mt-1 mb-2 pl-3 dark:bg-c"
               required
             />
           </div>
@@ -126,7 +132,7 @@ const AddVisa = () => {
               name="visa_type"
               required
               defaultValue={""}
-              className="w-full py-2 border border-black mt-1 mb-2 pl-3 dark:bg-c"
+              className="w-full py-3 rounded-full shadow-md mt-1 mb-2 pl-3 dark:bg-c"
             >
               <option value={""} disabled>
                 Please Select
@@ -146,7 +152,7 @@ const AddVisa = () => {
               name="processing_time"
               required
               defaultValue={""}
-              className="w-full py-2 border border-black mt-1 mb-2 pl-3 dark:bg-c"
+              className="w-full py-3 rounded-full shadow-md mt-1 mb-2 pl-3 dark:bg-c"
             >
               <option value={""} disabled>
                 Please Select
@@ -166,7 +172,7 @@ const AddVisa = () => {
               name="application_method"
               required
               defaultValue={""}
-              className="w-full py-2 border border-black mt-1 mb-2 pl-3 dark:bg-c"
+              className="w-full py-3 rounded-full shadow-md mt-1 mb-2 pl-3 dark:bg-c"
             >
               <option value={""} disabled>
                 Please Select
@@ -186,7 +192,7 @@ const AddVisa = () => {
               name="validity"
               required
               defaultValue={""}
-              className="w-full py-2 border border-black mt-1 mb-2 pl-3 dark:bg-c"
+              className="w-full py-3 rounded-full shadow-md mt-1 mb-2 pl-3 dark:bg-c"
             >
               <option value={""} disabled>
                 Please Select
@@ -206,99 +212,101 @@ const AddVisa = () => {
             <textarea
               name="description"
               placeholder="Description"
-              className="w-full h-28 border border-black mt-1 mb-2 pl-3 pt-2 dark:bg-c"
+              className="w-full rounded-xl shadow-md h-52 mt-1 mb-2 pl-3 pt-2 dark:bg-c"
               required
             ></textarea>
           </div>
         </div>
-        <div>
-          <label>
-            <span className="font-semibold">Required documents</span>
-          </label>
-          <div className="flex gap-2">
-            <span>Valid passport</span>
-            <input
-              type="checkbox"
-              value="Valid passport"
-              onChange={handleCheckboxChange}
-            />
+        <div className="flex flex-col md:flex-row justify-between">
+          <div>
+            <label>
+              <span className="font-semibold">Required documents</span>
+            </label>
+            <div className="flex gap-2">
+              <span>Valid passport</span>
+              <input
+                type="checkbox"
+                value="Valid passport"
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div className="flex gap-2">
+              <span>Invitation letter</span>
+              <input
+                type="checkbox"
+                value="Invitation Letter"
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div className="flex gap-2">
+              <span>Bank statement</span>
+              <input
+                type="checkbox"
+                value="Bank Statement"
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div className="flex gap-2">
+              <span>Travel insurance</span>
+              <input
+                type="checkbox"
+                value="Travel Insurance"
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div className="flex gap-2">
+              <span>Health certificate</span>
+              <input
+                type="checkbox"
+                value="Health Certificate"
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div className="flex gap-2">
+              <span>Proof of enrollment</span>
+              <input
+                type="checkbox"
+                value="Proof of Enrollment"
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div className="flex gap-2">
+              <span>Visa application form</span>
+              <input
+                type="checkbox"
+                value="Visa application form"
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div className="flex gap-2">
+              <span>Police clearance certificate</span>
+              <input
+                type="checkbox"
+                value="Police Clearance Certificate"
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div className="flex gap-2">
+              <span>Employment verification letter</span>
+              <input
+                type="checkbox"
+                value="Employment Verification Letter"
+                onChange={handleCheckboxChange}
+              />
+            </div>
+            <div className="flex gap-2">
+              <span>Recent passport sized photograph</span>
+              <input
+                type="checkbox"
+                value="Recent passport-sized photograph"
+                onChange={handleCheckboxChange}
+              />
+            </div>
           </div>
-          <div className="flex gap-2">
-            <span>Invitation letter</span>
-            <input
-              type="checkbox"
-              value="Invitation Letter"
-              onChange={handleCheckboxChange}
-            />
-          </div>
-          <div className="flex gap-2">
-            <span>Bank statement</span>
-            <input
-              type="checkbox"
-              value="Bank Statement"
-              onChange={handleCheckboxChange}
-            />
-          </div>
-          <div className="flex gap-2">
-            <span>Travel insurance</span>
-            <input
-              type="checkbox"
-              value="Travel Insurance"
-              onChange={handleCheckboxChange}
-            />
-          </div>
-          <div className="flex gap-2">
-            <span>Health certificate</span>
-            <input
-              type="checkbox"
-              value="Health Certificate"
-              onChange={handleCheckboxChange}
-            />
-          </div>
-          <div className="flex gap-2">
-            <span>Proof of enrollment</span>
-            <input
-              type="checkbox"
-              value="Proof of Enrollment"
-              onChange={handleCheckboxChange}
-            />
-          </div>
-          <div className="flex gap-2">
-            <span>Visa application form</span>
-            <input
-              type="checkbox"
-              value="Visa application form"
-              onChange={handleCheckboxChange}
-            />
-          </div>
-          <div className="flex gap-2">
-            <span>Police clearance certificate</span>
-            <input
-              type="checkbox"
-              value="Police Clearance Certificate"
-              onChange={handleCheckboxChange}
-            />
-          </div>
-          <div className="flex gap-2">
-            <span>Employment verification letter</span>
-            <input
-              type="checkbox"
-              value="Employment Verification Letter"
-              onChange={handleCheckboxChange}
-            />
-          </div>
-          <div className="flex gap-2">
-            <span>Recent passport sized photograph</span>
-            <input
-              type="checkbox"
-              value="Recent passport-sized photograph"
-              onChange={handleCheckboxChange}
-            />
-          </div>
+          <button className="h-14 bg-black dark:bg-c text-white mt-5 py-2 px-10 font-bold">
+            Add Visa
+          </button>
         </div>
-        <button className="bg-primary text-white dark:bg-white dark:text-black mt-5 py-2 px-10 font-bold">
-          Add Visa
-        </button>
       </form>
     </div>
   );

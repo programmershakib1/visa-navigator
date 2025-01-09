@@ -4,20 +4,23 @@
 
 .active {
   font-weight: 700;
-  text-decoration: underline;
+  color: black;
 }
 
 :root {
-  --bg-color: #ffffff;
-  --text-color: #000000;
+  --bg-color-light: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+  --bg-color-dark: #000000;
+  --text-color-light: #000000;
+  --text-color-dark: #ffffff;
 }
 
-.dark {
-  --bg-color: rgb(14, 15, 17);
-  --text-color: #ffffff;
+html {
+  background: var(--bg-color-light);
+  color: var(--text-color-light);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+html.dark {
+  background: var(--bg-color-dark);
+  color: var(--text-color-dark);
 }

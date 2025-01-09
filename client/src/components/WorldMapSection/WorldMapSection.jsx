@@ -10,7 +10,7 @@ const WorldMapSection = () => {
   const { animationValue } = useContext(AuthContext);
 
   return (
-    <div className="mx-5 md:mx-0">
+    <div className="mx-5 md:mx-0 mt-20">
       <div className="w-full h-60 md:h-96 lg:h-[600px]">
         <motion.h2
           {...animationValue}

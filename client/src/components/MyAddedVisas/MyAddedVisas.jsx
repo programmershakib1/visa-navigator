@@ -74,7 +74,13 @@ const MyAddedVisas = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
-          Swal.fire("Visa update successful");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Visa update successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           setVisas((prevVisas) =>
             prevVisas.map((visa) =>
               visa._id === id ? { ...visa, ...visaInfo } : visa
@@ -116,9 +122,9 @@ const MyAddedVisas = () => {
   };
 
   return (
-    <div className="md:mt-10 mx-5 md:mx-0">
+    <div className="mt-10 mx-5 md:mx-0">
       <Helmet>
-        <title>VN | My Added Visas</title>
+        <title>My Added Visas - Visa Navigator</title>
       </Helmet>
       {loading ? (
         <div className="text-center mt-20">
@@ -136,40 +142,40 @@ const MyAddedVisas = () => {
               on the Add Visa button.
             </h2>
             <Link to="/addVisa">
-              <button className="bg-black text-white dark:bg-white dark:text-black py-2 px-4 font-bold rounded-sm">
+              <button className="bg-black dark:bg-c text-white py-2 px-4 font-bold rounded-sm">
                 Add Visa
               </button>
             </Link>
           </div>
         </div>
       )}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {visas.map((visa, idx) => (
           <div key={idx}>
             <Zoom>
               <div className="shadow-xl rounded-xl p-5 dark:bg-c transition-transform hover:scale-105 hover:shadow-xl">
                 <div>
                   <img
-                    className="w-full h-52 lg:h-72 md:h-96 rounded-xl"
+                    className="w-full h-48 rounded-xl"
                     src={visa?.photo}
                     alt=""
                   />
                 </div>
                 <div>
-                  <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-0 md:items-center mt-8">
+                  <div className="flex justify-between gap-3 md:gap-0 md:items-center mt-5">
                     <h2 className="text-2xl font-black">{visa?.name}</h2>
                     <h4 className="text-xl font-semibold">{visa?.visa_type}</h4>
                   </div>
-                  <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-0 md:items-center md:my-5 my-3">
-                    <p className="font-semibold">
+                  <div className="flex justify-between gap-3 md:gap-0 md:items-center my-3">
+                    <p>
                       Processing time : {visa?.processing_time}
                     </p>
-                    <p className="font-semibold">Fee : $ {visa?.fee}</p>
+                    <p>$ {visa?.fee}</p>
                   </div>
-                  <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-0 md:items-center">
-                    <p className="font-semibold">validity : {visa?.validity}</p>
-                    <p className="font-semibold">
-                      Application method : {visa?.application_method}
+                  <div className="flex justify-between gap-3 md:gap-0 md:items-center">
+                    <p>Validity : {visa?.validity}</p>
+                    <p>
+                      Method : {visa?.application_method}
                     </p>
                   </div>
                   <div className="flex justify-between mt-5">
@@ -178,20 +184,20 @@ const MyAddedVisas = () => {
                         setVisaValue(visa);
                         document.getElementById("my_modal_4").showModal();
                       }}
-                      className="bg-primary text-white dark:bg-white dark:text-black py-1 px-4 font-bold rounded-sm"
+                      className="bg-black text-white dark:bg-white dark:text-black py-1 px-4 font-bold rounded-sm"
                     >
                       Update
                     </button>
                     <button
                       onClick={() => handleDelete(visa._id)}
-                      className="bg-primary text-white dark:bg-white dark:text-black py-1 px-4 font-bold rounded-sm"
+                      className="bg-black text-white dark:bg-white dark:text-black py-1 px-4 font-bold rounded-sm"
                     >
                       Delete
                     </button>
                   </div>
                 </div>
                 <dialog id="my_modal_4" className="modal">
-                  <div className="modal-box w-11/12 max-w-5xl dark:bg-neutral-950">
+                  <div className="modal-box w-11/12 max-w-5xl bg-[#d7e1ec] dark:bg-neutral-950">
                     <form onSubmit={handleUpdateVisa} id="applyForm">
                       <div className="md:grid gap-2">
                         <div className="flex flex-col">
@@ -203,7 +209,7 @@ const MyAddedVisas = () => {
                             name="name"
                             placeholder="Country name"
                             defaultValue={visaValue?.name}
-                            className="w-full py-2 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                            className="w-full py-3 rounded-full shadow-md dark:bg-c mt-1 mb-2 pl-3"
                             required
                           />
                         </div>
@@ -216,7 +222,7 @@ const MyAddedVisas = () => {
                             type="text"
                             placeholder="Country image"
                             defaultValue={visaValue?.photo}
-                            className="w-full py-2 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                            className="w-full py-3 rounded-full shadow-md dark:bg-c mt-1 mb-2 pl-3"
                             required
                           />
                         </div>
@@ -229,7 +235,7 @@ const MyAddedVisas = () => {
                             name="fee"
                             placeholder="Fee"
                             defaultValue={visaValue?.fee}
-                            className="w-full py-2 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                            className="w-full py-3 rounded-full shadow-md dark:bg-c mt-1 mb-2 pl-3"
                             required
                           />
                         </div>
@@ -244,7 +250,7 @@ const MyAddedVisas = () => {
                             name="age_restriction"
                             placeholder="Age restriction"
                             defaultValue={visaValue?.age_restriction}
-                            className="w-full py-2 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                            className="w-full py-3 rounded-full shadow-md dark:bg-c mt-1 mb-2 pl-3"
                             required
                           />
                         </div>
@@ -257,7 +263,7 @@ const MyAddedVisas = () => {
                               name="visa_type"
                               required
                               defaultValue={visaValue.visa_type}
-                              className="w-full py-2 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                              className="w-full py-3 rounded-full shadow-md dark:bg-c mt-1 mb-2 pl-3"
                             >
                               <option value="Tourist visa">Tourist visa</option>
                               <option value="Student visa">Student visa</option>
@@ -282,7 +288,7 @@ const MyAddedVisas = () => {
                               name="processing_time"
                               required
                               defaultValue={visaValue.processing_time}
-                              className="w-full py-2 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                              className="w-full py-3 rounded-full shadow-md dark:bg-c mt-1 mb-2 pl-3"
                             >
                               <option value="2 Days">2 Days</option>
                               <option value="5 Days">5 Days</option>
@@ -303,7 +309,7 @@ const MyAddedVisas = () => {
                               name="application_method"
                               required
                               defaultValue={visaValue.application_method}
-                              className="w-full py-2 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                              className="w-full py-3 rounded-full shadow-md dark:bg-c mt-1 mb-2 pl-3"
                             >
                               <option value="online">Online application</option>
                               <option value="in-person">
@@ -329,7 +335,7 @@ const MyAddedVisas = () => {
                               name="validity"
                               required
                               defaultValue={visaValue.validity}
-                              className="w-full py-2 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                              className="w-full py-3 rounded-full shadow-md dark:bg-c mt-1 mb-2 pl-3"
                             >
                               <option value="1 Month">1 Month</option>
                               <option value="5 Month">3 Month</option>
@@ -349,10 +355,23 @@ const MyAddedVisas = () => {
                             name="description"
                             placeholder="Description"
                             defaultValue={visaValue?.description}
-                            className="w-full h-20 py-2 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                            className="w-full h-40 rounded-xl shadow-md py-2 dark:bg-c mt-1 mb-2 pl-3"
                             required
                           />
                         </div>
+                      </div>
+                      <div className="flex justify-center mt-5">
+                        <button
+                          onClick={() => {
+                            const form = document.getElementById("applyForm");
+                            if (form.checkValidity()) {
+                              document.getElementById("my_modal_4").close();
+                            }
+                          }}
+                          className="hidden md:block bg-black dark:bg-c text-white py-2 px-6 font-bold rounded-md"
+                        >
+                          Update
+                        </button>
                       </div>
                       {visaValue.required_documents && (
                         <div>
@@ -483,9 +502,9 @@ const MyAddedVisas = () => {
                               document.getElementById("my_modal_4").close();
                             }
                           }}
-                          className="bg-primary text-white dark:bg-white dark:text-black py-2 px-6 font-bold rounded-md"
+                          className="block md:hidden bg-black dark:bg-c text-white py-2 px-6 font-bold rounded-md"
                         >
-                          Apply
+                          Update
                         </button>
                       </div>
                     </form>
@@ -502,7 +521,7 @@ const MyAddedVisas = () => {
                           setVisaValue("");
                           document.getElementById("my_modal_4").close();
                         }}
-                        className="bg-primary text-white dark:bg-white dark:text-black py-2 px-6 font-bold rounded-md"
+                        className="bg-black dark:bg-c text-white py-2 px-6 font-bold rounded-md"
                       >
                         Close
                       </button>

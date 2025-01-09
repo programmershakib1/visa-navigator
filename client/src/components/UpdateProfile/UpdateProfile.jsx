@@ -44,38 +44,42 @@ const UpdateProfile = () => {
   return (
     <div>
       <Helmet>
-        <title>VN | Update Profile</title>
+        <title>Update Profile - Visa Navigator</title>
       </Helmet>
-      <div className="flex flex-col items-center lg:pt-10 md:pt-20">
-        <h2 className="text-3xl font-bold text-primary dark:text-white pb-5">
+      <div className="flex flex-col items-center mt-10 md:mt-20">
+        <h2 className="text-3xl font-bold pb-5">
           Update Profile
         </h2>
         <form
           onSubmit={handleSubmit}
           action=""
-          className="flex flex-col items-center"
+          className="flex flex-col items-center w-full"
         >
-          <label>
-            <span className="mr-[246px] font-semibold">Name</span>
-          </label>
-          <input
-            name="name"
-            type="text"
-            placeholder="name"
-            className="w-72 py-1 border border-black dark:bg-c mt-1 mb-2 pl-3"
-            required
-          />
-          <label>
-            <span className="mr-[212px] font-semibold">Photo URL</span>
-          </label>
-          <input
-            name="photo"
-            type="text"
-            placeholder="photo url"
-            className="w-72 py-1 border border-black dark:bg-c mt-1 pl-3"
-            required
-          />
-          <button className="bg-primary dark:bg-white dark:text-black py-0.5 px-6 text-white rounded-full font-bold mt-3">
+          <div className="flex flex-col w-4/5 md:w-1/2 lg:w-1/4 mx-auto">
+            <label>
+              <span className="font-semibold">Name</span>
+            </label>
+            <input
+              name="name"
+              type="text"
+              placeholder="Name"
+              className="py-3 rounded-full shadow-md mt-1 pl-3 dark:bg-c"
+              required
+            />
+          </div>
+          <div className="flex flex-col w-4/5 md:w-1/2 lg:w-1/4 mx-auto mt-2">
+            <label>
+              <span className="font-semibold">Photo URL</span>
+            </label>
+            <input
+              name="photo"
+              type="text"
+              placeholder="Photo url"
+              className="py-3 rounded-full shadow-md mt-1 pl-3 dark:bg-c"
+              required
+            />
+          </div>
+          <button className="bg-black dark:bg-c py-0.5 px-6 text-white rounded-full font-bold mt-3">
             Update
           </button>
         </form>

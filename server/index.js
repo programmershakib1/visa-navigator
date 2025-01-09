@@ -39,12 +39,24 @@ async function run() {
 
     // visa
     app.get("/visas", async (req, res) => {
-      const { visa_type } = req.query;
+      const { visa_type, search, sort } = req.query;
+
       let query = {};
+      
       if (visa_type && visa_type !== "All") {
-        query = { visa_type };
+        query.visa_type = visa_type;
       }
-      const cursor = visaCollection.find(query);
+      if (search) {
+        query.name = { $regex: search, $options: "i" };
+      }
+
+      let cursor = visaCollection.find(query);
+
+      if (sort) {
+        const sortOrder = sort === "asc" ? 1 : -1;
+        cursor = cursor.sort({ fee: sortOrder });
+      }
+
       const result = await cursor.toArray();
       res.send(result);
     });

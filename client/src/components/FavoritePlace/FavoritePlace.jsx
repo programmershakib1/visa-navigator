@@ -19,28 +19,28 @@ const FavoritePlace = () => {
   const videos = [
     {
       src: video1,
-      title: "Cloud City, Ireland",
+      title: "Ireland",
     },
     {
       src: video2,
-      title: "Greenland, the green city",
+      title: "Greenland",
     },
     {
       src: video3,
-      title: "Magical city, Switzerland",
+      title: "Switzerland",
     },
     {
       src: video4,
-      title: "Green mountains, Italy",
+      title: "Italy",
     },
     {
       src: video5,
-      title: "Jungle city, Brazil",
+      title: "Brazil",
     },
   ];
 
   return (
-    <div className="mx-5 md:mx-0 lg:my-32 my-20">
+    <div className="mx-5 md:mx-0 mt-20">
       <motion.h2
         {...animationValue}
         className="text-center mb-5 text-4xl font-bold"
@@ -104,7 +104,7 @@ const FavoritePlace = () => {
           <Link to="allVisas">
             <motion.button
               {...animationValue}
-              className="bg-black text-white dark:bg-white dark:text-black font-bold py-2 px-6 mt-5"
+              className="bg-black dark:bg-c text-white font-bold py-2 px-6 mt-5"
             >
               Apply now
             </motion.button>

@@ -65,24 +65,22 @@ const MyVisaApplications = () => {
   };
 
   return (
-    <div className="mx-5 md:mx-0 mt-0 md:mt-10 lg:mt-0">
+    <div className="mx-5 md:mx-0 mt-10">
       <Helmet>
-        <title>VN | My Visa Applications</title>
+        <title>My Visa Applications - Visa Navigator</title>
       </Helmet>
-      <div className="text-center mb-10 flex gap-3 justify-center mx-5">
+      <div className="text-center flex gap-2 justify-center mx-5">
         <input
           type="text"
-          placeholder="Search by country name"
+          placeholder="Type country name"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
-          className="border w-full md:w-1/2 lg:w-1/3 border-black px-4 py-2 rounded-sm dark:bg-c"
+          className="w-full md:w-1/2 lg:w-1/3 px-4 py-2 rounded-l-full shadow-md dark:bg-c"
         />
-        <button
+        <i
           onClick={handleSearch}
-          className="bg-primary border border-black text-white dark:bg-white dark:text-black py-2 px-6 font-bold rounded-sm"
-        >
-          Search
-        </button>
+          className="fa-solid fa-magnifying-glass bg-white dark:bg-c px-4 py-1 text-2xl rounded-r-full"
+        ></i>
       </div>
       {!appliedVisa.length && !loading && (
         <div className="text-center my-20">
@@ -92,7 +90,7 @@ const MyVisaApplications = () => {
               the All <br /> Visas button and see the next steps.
             </h2>
             <Link to="/allVisas">
-              <button className="bg-black text-white dark:bg-white dark:text-black py-2 px-4 font-bold rounded-sm">
+              <button className="bg-black text-white dark:bg-c py-2 px-4 font-bold rounded-sm">
                 All Visas
               </button>
             </Link>
@@ -100,59 +98,54 @@ const MyVisaApplications = () => {
         </div>
       )}
       {loading ? (
-        <div className="text-center mt-16">
+        <div className="text-center mt-5">
           <span className="loading loading-bars loading-lg"></span>
         </div>
       ) : (
         ""
       )}
-      <div className="grid lg:grid-cols-3 gap-5">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
         {filteredVisas.map((visa, idx) => (
           <div key={idx}>
             <Zoom>
               <div className="shadow-xl rounded-xl p-5 dark:bg-c transition-transform hover:scale-105 hover:shadow-xl">
                 <div>
                   <img
-                    className="w-full lg:h-72 md:h-96 rounded-xl"
+                    className="w-full h-48 rounded-xl"
                     src={visa?.photo}
                     alt=""
                   />
                 </div>
-                <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-0 justify-between mt-8">
-                  <div className="flex gap-1 text-2xl font-bold">
-                    <h2>{visa?.first_name}</h2>
-                    <h2>{visa?.last_name}</h2>
-                  </div>
-                  <div>
-                    <h5>{visa?.email}</h5>
-                  </div>
-                </div>
                 <div>
-                  <div className="flex flex-col md:flex-row justify-between gap-3 md:gap-0 md:items-center mt-5">
+                  <div className="flex justify-between gap-3 md:gap-0 md:items-center mt-5">
                     <h2 className="text-2xl font-black">{visa?.name}</h2>
                     <h4 className="text-xl font-semibold">{visa?.visa_type}</h4>
                   </div>
-                  <div className="flex flex-col md:flex-row justify-between gap-2 md:gap-0 md:items-center my-2">
-                    <p className="font-semibold">
-                      Processing time : {visa?.processing_time}
-                    </p>
-                    <p className="font-semibold">Fee : $ {visa?.fee}</p>
+                  <div className="flex justify-between gap-2 md:gap-0 md:items-center my-2">
+                    <p>Processing time : {visa?.processing_time}</p>
+                    <p>$ {visa?.fee}</p>
                   </div>
-                  <div className="flex flex-col md:flex-row justify-between gap-2 md:gap-0 md:items-center">
-                    <p className="font-semibold">Validity : {visa?.validity}</p>
-                    <p className="font-semibold">
-                      Application method : {visa?.application_method}
-                    </p>
+                  <div className="flex justify-between gap-2 md:gap-0 md:items-center">
+                    <p>Validity : {visa?.validity}</p>
+                    <p>Method : {visa?.application_method}</p>
                   </div>
                   <div>
-                    <p className="font-semibold mt-2">
+                    <p className="mt-2">
                       Applied date : {visa?.applied_date}
                     </p>
                   </div>
-
+                  <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-0 justify-between mt-3">
+                    <div className="flex gap-1 font-bold">
+                      <h2>{visa?.first_name}</h2>
+                      <h2>{visa?.last_name}</h2>
+                    </div>
+                    <div>
+                      <h5 className="font-semibold">{visa?.email}</h5>
+                    </div>
+                  </div>
                   <button
                     onClick={() => handleCancel(visa?._id)}
-                    className="bg-primary text-white dark:bg-white dark:text-black py-1 px-4 font-bold mt-5 rounded-sm"
+                    className="bg-black text-white dark:bg-white dark:text-black py-1 px-4 font-bold mt-5 rounded-sm"
                   >
                     Cancel
                   </button>

@@ -7,20 +7,24 @@ const VisaCard = ({ visa }) => {
 
   return (
     <Zoom>
-      <div className="text-center flex flex-col justify-center items-center gap-5 shadow-xl rounded-xl py-8 px-5 dark:bg-c transition-transform hover:scale-105 hover:shadow-xl">
-        <div>
-          <img className="w-40 h-40 rounded-full" src={photo} alt="" />
+      <div className="shadow-xl rounded-xl p-5 dark:bg-c transition-transform hover:scale-105 hover:shadow-xl">
+        <div className="w-full">
+          <img className="w-full h-48 rounded-xl" src={photo} alt="" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold">{name}</h2>
-          <h4 className="text-xl font-semibold">{visa_type}</h4>
-          <p className="font-semibold mb-5">$ {fee}</p>
-          <Link
-            to={`/visaDetails/${_id}`}
-            className="bg-primary text-white dark:bg-white dark:text-black py-1 px-4 font-bold my-3 rounded-sm"
-          >
-            See Details
-          </Link>
+          <div className="flex items-center justify-between mt-3">
+            <h2 className="text-2xl font-bold">{name}</h2>
+            <h4 className="text-xl font-semibold">{visa_type}</h4>
+          </div>
+          <div className="flex items-center justify-between mt-3">
+            <p className="font-semibold">$ {fee}</p>
+            <Link
+              to={`/visaDetails/${_id}`}
+              className="bg-black text-white py-1 px-4 font-bold rounded-sm"
+            >
+              See Details
+            </Link>
+          </div>
         </div>
       </div>
     </Zoom>

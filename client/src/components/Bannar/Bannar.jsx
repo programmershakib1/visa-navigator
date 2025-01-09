@@ -21,7 +21,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="mx-5 md:mx-0">
+    <div className="mx-5 md:mx-0 mt-10">
       <Swiper
         className="h-64 lg:h-[600px] md:h-[400px] mx-auto mt-5 md:mt-10 lg:mt-5 rounded-2xl relative"
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}

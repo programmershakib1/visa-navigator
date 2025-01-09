@@ -69,35 +69,42 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex flex-col items-center lg:pt-10 md:pt-20">
+    <div className="flex flex-col items-center mt-10 md:mt-20">
       <Helmet>
-        <title>VN | Sign In</title>
+        <title>SignIn - Visa Navigator</title>
       </Helmet>
-      <h2 className="text-3xl font-bold text-primary dark:text-white  pb-5">
+      <h2 className="text-3xl font-bold  pb-5">
         Sign In
       </h2>
-      <form onSubmit={handleSubmit} className="flex flex-col items-center">
-        <label>
-          <span className="mr-[250px] font-semibold">Email</span>
-        </label>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          ref={emailRef}
-          className="w-72 py-1 border border-black mt-1 mb-2 pl-3 dark:bg-c"
-          required
-        />
-        <label>
-          <span className="mr-[222px] font-semibold">Password</span>
-        </label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className="w-72 py-1 border border-black mt-1 pl-3 dark:bg-c"
-          required
-        />
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center w-full"
+      >
+        <div className="flex flex-col w-4/5 md:w-1/2 lg:w-1/4 mx-auto">
+          <label>
+            <span className="font-semibold">Email</span>
+          </label>
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            ref={emailRef}
+            className="py-3 rounded-full shadow-md mt-1 pl-3 dark:bg-c"
+            required
+          />
+        </div>
+        <div className="flex flex-col w-4/5 md:w-1/2 lg:w-1/4 mx-auto mt-2">
+          <label>
+            <span className="font-semibold">Password</span>
+          </label>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            className="py-3 rounded-full shadow-md mt-1 pl-3 dark:bg-c"
+            required
+          />
+        </div>
         <button>
           <Link
             onClick={handleEmail}
@@ -107,7 +114,7 @@ const SignIn = () => {
             Forget password?
           </Link>
         </button>
-        <button className="bg-primary py-0.5 px-6 text-white dark:bg-white dark:text-black rounded-full font-bold">
+        <button className="bg-black py-0.5 px-6 text-white dark:bg-c rounded-full font-bold">
           Sign In
         </button>
       </form>
@@ -154,10 +161,10 @@ const SignIn = () => {
                   toast.error(error?.code);
                 });
             }}
-            className="bg-primary py-2 px-6 text-white dark:bg-white dark:text-black rounded-full font-bold mt-5"
+            className="bg-black py-2 px-6 text-white dark:bg-c rounded-full font-bold mt-5"
           >
-            <i className="fa-brands fa-google text-white dark:text-black pr-2"></i>
-            Continue with Google
+            <i className="fa-brands fa-google text-white pr-2"></i>
+            Google
           </button>
           <button
             onClick={() => {
@@ -193,10 +200,10 @@ const SignIn = () => {
                   toast.error(error?.code);
                 });
             }}
-            className="bg-primary py-2 px-6 text-white dark:bg-white dark:text-black rounded-full font-bold md:mt-5"
+            className="bg-black py-2 px-6 text-white dark:bg-c rounded-full font-bold md:mt-5"
           >
-            <i className="fa-brands fa-github text-white dark:text-black pr-2"></i>
-            Continue with Github
+            <i className="fa-brands fa-github text-white pr-2"></i>
+            Github
           </button>
         </div>
       </div>

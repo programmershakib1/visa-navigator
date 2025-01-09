@@ -3,7 +3,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { Tooltip } from "react-tooltip";
 const Welcome = () => {
   return (
-    <div className="text-center mt-10 mb-20 mx-5 lg:mx-48">
+    <div className="text-center mt-10 mx-5 lg:mx-48">
       <h2 className="text-5xl font-black font-mono min-h-36 md:min-h-28 lg:min-h-20">
         <Typewriter
           words={[
@@ -33,7 +33,7 @@ const Welcome = () => {
       <button
         data-tooltip-id="tooltip"
         data-tooltip-content="Click here to Started"
-        className="bg-primary text-xl text-white dark:bg-white dark:text-black font-black py-2 mt-5 rounded-sm font-sora"
+        className="bg-black dark:bg-c text-xl text-white font-black py-2 mt-5 rounded-sm font-sora"
       >
         <Link to="allVisas" className="px-8">
           GET STARTED

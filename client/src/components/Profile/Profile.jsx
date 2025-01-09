@@ -10,13 +10,14 @@ const Profile = () => {
     <div className="flex flex-col items-center mx-5">
       <Helmet>
         <title>
-          VN | Welcome {`${user?.displayName ? user.displayName : "User"}`}
+          Welcome {`${user?.displayName ? user.displayName : "User"}`} - Visa
+          Navigator
         </title>
       </Helmet>
       <h2 className="text-2xl text-center font-bold font-sora mb-5 md:pt-10">
         Welcome {user?.displayName ? user.displayName : "User"}
       </h2>
-      <div className="flex flex-col md:flex-row justify-center md:gap-5 mt-10 text-center md:text-left">
+      <div className="flex flex-col md:flex-row justify-center md:gap-5 md:mt-5 text-center md:text-left">
         <div className="flex justify-center items-center">
           {user?.photoURL ? (
             <img
@@ -35,12 +36,12 @@ const Profile = () => {
           <p className="text-p font-semibold">{user?.email}</p>
           <div className="flex flex-col gap-3 mt-5">
             <Link to="/updateProfile">
-              <button className="w-full border rounded-full dark:bg-white dark:text-black border-black py-1 px-6 font-semibold">
+              <button className="w-full border rounded-full dark:bg-c border-black py-1 px-6 font-semibold">
                 Update Profile
               </button>
             </Link>
             <Link to="/SignIn">
-              <button className="w-full border rounded-full dark:bg-white dark:text-black border-black py-1 px-6 font-semibold">
+              <button className="w-full border rounded-full dark:bg-c border-black py-1 px-6 font-semibold">
                 Change Account
               </button>
             </Link>

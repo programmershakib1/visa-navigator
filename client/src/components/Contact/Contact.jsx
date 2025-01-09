@@ -86,11 +86,7 @@ const Contact = () => {
           Send us your question and we will try to answer you quickly.
         </p>
       </motion.div>
-      <motion.form
-        onSubmit={handleQuestions}
-        className="lg:mx-40"
-        {...animationValue}
-      >
+      <motion.form onSubmit={handleQuestions} {...animationValue}>
         <div className="flex flex-col md:flex-row justify-center gap-2 md:gap-5">
           <div className="w-full">
             <span className="font-semibold text-left">Name</span>
@@ -98,7 +94,7 @@ const Contact = () => {
               name="name"
               type="text"
               placeholder="Name"
-              className="w-full py-1 border border-black mt-1 mb-2 pl-3  dark:bg-c"
+              className="w-full shadow-md rounded-full py-3 mt-1 mb-2 pl-3 dark:bg-c"
               required
             />
           </div>
@@ -108,7 +104,7 @@ const Contact = () => {
               name="registration_number"
               type="number"
               placeholder="Registration number (if available)"
-              className="w-full py-1 border border-black mt-1 mb-2 pl-3  dark:bg-c"
+              className="w-full shadow-md rounded-full py-3 mt-1 mb-2 pl-3 dark:bg-c"
             />
           </div>
         </div>
@@ -119,7 +115,7 @@ const Contact = () => {
               name="phone"
               type="number"
               placeholder="Phone"
-              className="w-full py-1 border border-black mt-1 mb-2 pl-3  dark:bg-c"
+              className="w-full shadow-md rounded-full py-3 mt-1 mb-2 pl-3  dark:bg-c"
               required
             />
           </div>
@@ -129,7 +125,7 @@ const Contact = () => {
               name="email"
               type="email"
               placeholder="Email"
-              className="w-full py-1 border border-black mt-1 mb-2 pl-3  dark:bg-c"
+              className="w-full shadow-md rounded-full py-3 mt-1 mb-2 pl-3  dark:bg-c"
               required
             />
           </div>
@@ -137,13 +133,13 @@ const Contact = () => {
         <div>
           <span className="font-semibold">Question</span>
           <textarea
-            className="border border-black w-full h-40 pl-3 pt-3  dark:bg-c mt-1 mb-2"
+            className="w-full shadow-md rounded-xl h-40 pl-3 pt-3  dark:bg-c mt-1 mb-2"
             name="question"
             placeholder="Question"
             required
           ></textarea>
         </div>
-        <button className="bg-black text-white dark:bg-white dark:text-black py-2 px-10 rounded-sm font-bold mt-3">
+        <button className="bg-black dark:bg-c text-white py-2 px-10 rounded-sm font-bold mt-3">
           Submit
         </button>
       </motion.form>

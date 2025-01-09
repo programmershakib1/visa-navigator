@@ -50,7 +50,13 @@ const VisaDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          Swal.fire("Visa apply successful");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Visa apply successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
@@ -64,9 +70,9 @@ const VisaDetails = () => {
   });
 
   return (
-    <div className="shadow-xl rounded-xl p-5 md:p-10 dark:bg-c md:mt-10 mx-5 md:mx-0 lg:mx-40">
+    <div className="shadow-xl rounded-xl p-5 md:p-10 dark:bg-c mt-10 mx-5 md:mx-0 lg:mx-40">
       <Helmet>
-        <title>VN | Visa Details</title>
+        <title>Visa Details - Visa Navigator</title>
       </Helmet>
       <div className="h-60 md:h-96 lg:h-[500px] col-span-3">
         <img className="w-full h-full rounded-xl" src={photo} alt="" />
@@ -86,8 +92,8 @@ const VisaDetails = () => {
         <p className="font-semibold mt-3 md:mt-5">
           Application method : {application_method}
         </p>
-        <p className="text-p font-semibold py-3">
-          <span className="text-black dark:text-white">Description :</span>{" "}
+        <p className="py-3">
+          <span className="text-black dark:text-white"><span className="font-semibold">Description</span> :</span>{" "}
           {description}
         </p>
         <p className="font-semibold">Required documents</p>
@@ -98,13 +104,13 @@ const VisaDetails = () => {
         </p>
         <button
           onClick={() => document.getElementById("my_modal_5").showModal()}
-          className="bg-primary text-white dark:bg-white dark:text-black py-1 px-4 font-bold my-3 rounded-sm"
+          className="bg-black text-white py-3 px-4 font-bold my-3 rounded-sm"
         >
           Apply for the visa
         </button>
       </div>
       <dialog id="my_modal_5" className="modal sm:modal-middle">
-        <div className="modal-box py-10 dark:bg-neutral-950">
+        <div className="modal-box py-10 bg-[#d7e1ec]  dark:bg-neutral-950">
           <form id="applyForm" onSubmit={handleApply}>
             <label>
               <span className="font-semibold">Email</span>
@@ -114,7 +120,7 @@ const VisaDetails = () => {
               type="email"
               placeholder="Email"
               defaultValue={auth?.currentUser?.email}
-              className="w-full py-1 border border-black dark:bg-c mt-1 mb-2 pl-3"
+              className="w-full py-2 shadow-md rounded-full dark:bg-c mt-1 mb-2 pl-3"
               required
             />
             <div className="grid md:grid-cols-2 md:gap-5">
@@ -126,7 +132,7 @@ const VisaDetails = () => {
                   name="first_name"
                   type="text"
                   placeholder="FirstName"
-                  className="w-full py-1 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                  className="w-full py-2 shadow-md rounded-full dark:bg-c mt-1 mb-2 pl-3"
                   required
                 />
               </div>
@@ -138,7 +144,7 @@ const VisaDetails = () => {
                   name="last_name"
                   type="text"
                   placeholder="LastName"
-                  className="w-full py-1 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                  className="w-full py-2 shadow-md rounded-full dark:bg-c mt-1 mb-2 pl-3"
                   required
                 />
               </div>
@@ -153,7 +159,7 @@ const VisaDetails = () => {
                   type="text"
                   placeholder="Applied date"
                   defaultValue={formattedDate}
-                  className="w-full py-1 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                  className="w-full py-2 shadow-md rounded-full dark:bg-c mt-1 mb-2 pl-3"
                   required
                 />
               </div>
@@ -166,7 +172,7 @@ const VisaDetails = () => {
                   type="text"
                   placeholder="Fee"
                   defaultValue={fee}
-                  className="w-full py-1 border border-black dark:bg-c mt-1 mb-2 pl-3"
+                  className="w-full py-2 shadow-md rounded-full dark:bg-c mt-1 mb-2 pl-3"
                   required
                 />
               </div>
@@ -179,7 +185,7 @@ const VisaDetails = () => {
                     document.getElementById("my_modal_5").close();
                   }
                 }}
-                className="bg-primary text-white dark:bg-white dark:text-black py-2 px-6 font-bold rounded-md"
+                className="bg-black dark:bg-c text-white py-2 px-6 font-bold rounded-md"
               >
                 Apply
               </button>
@@ -187,7 +193,7 @@ const VisaDetails = () => {
           </form>
           <button
             onClick={() => document.getElementById("my_modal_5").close()}
-            className="bg-primary text-white dark:bg-white dark:text-black py-2 px-6 font-bold rounded-md"
+            className="bg-black dark:bg-c text-white py-2 px-6 font-bold rounded-md"
           >
             Close
           </button>
